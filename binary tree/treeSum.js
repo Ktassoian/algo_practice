@@ -17,20 +17,20 @@ const treeSum = (root) => {
 };
 
 // iterative Approach
-// const treeSum = (root) => {
-//   if (root === null) return 0;
-//   let sum = 0;
-//   const queue = [ root ];
-//   while (queue.length > 0){
-//     const current = queue.shift();
-//     sum += current.val;
+const treeSum1 = (root) => {
+  if (root === null) return 0;
+  let sum = 0;
+  const queue = [root];
+  while (queue.length > 0) {
+    const current = queue.shift();
+    sum += current.val;
 
-//     if (current.left !== null) queue.push(current.left);
+    if (current.left !== null) queue.push(current.left);
 
-//     if (current.right !== null) queue.push(current.right)
-//   }
-//   return sum;
-// };
+    if (current.right !== null) queue.push(current.right);
+  }
+  return sum;
+};
 
 const a = new Node(1);
 const b = new Node(6);
@@ -58,3 +58,4 @@ f.right = h;
 //   2         2
 
 treeSum(a); // -> 10
+treeSum1(a);
