@@ -1,5 +1,3 @@
-// Recursive --> base case === null node
-
 /*
 Write a function, treeSum, that takes in the root of a binary tree that contains number values. The function should return the total sum of all values in the tree.
 */
@@ -12,10 +10,27 @@ class Node {
   }
 }
 
+// Recursive
 const treeSum = (root) => {
   if (root === null) return 0;
   return root.val + treeSum(root.left) + treeSum(root.right);
 };
+
+// iterative Approach
+// const treeSum = (root) => {
+//   if (root === null) return 0;
+//   let sum = 0;
+//   const queue = [ root ];
+//   while (queue.length > 0){
+//     const current = queue.shift();
+//     sum += current.val;
+
+//     if (current.left !== null) queue.push(current.left);
+
+//     if (current.right !== null) queue.push(current.right)
+//   }
+//   return sum;
+// };
 
 const a = new Node(1);
 const b = new Node(6);
