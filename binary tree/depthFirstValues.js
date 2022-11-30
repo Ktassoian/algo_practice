@@ -10,20 +10,20 @@ class Node {
   }
 }
 
-// const depthFirstValues = (root) => {
-//   if (root === null) return [];
-//   const result = [];
-//   const stack = [root];
-//   while (stack.length > 0) {
-//     const current = stack.pop();
-//     result.push(current.val);
-//     if (current.right) result.push(current.right);
-//     if (current.left) result.push(current.left);
-//   }
-// };
+const depthFirstValues = (root) => {
+  if (root === null) return [];
+  const result = [];
+  const stack = [root];
+  while (stack.length > 0) {
+    const current = stack.pop();
+    result.push(current.val);
+    if (current.right) result.push(current.right);
+    if (current.left) result.push(current.left);
+  }
+};
 
 // Recursive
-const depthFirstValues = (root) => {
+const depthFirstValues1 = (root) => {
   if (root === null) return [];
   const leftVal = depthFirstValues(root.left);
   const rightVal = depthFirstValues(root.right);
@@ -50,4 +50,5 @@ c.right = f;
 // d   e     f
 
 depthFirstValues(a);
+depthFirstValues1(a);
 //    -> ['a', 'b', 'd', 'e', 'c', 'f']
