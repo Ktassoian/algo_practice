@@ -10,10 +10,24 @@ class Node {
   }
 }
 
+// depth first search Time: O(n) | Space: O(n)
 const treeIncludes = (root, target) => {
   if (root === null) return false;
   if (root.val === target) return true;
   return treeIncludes(root.left, target) || treeIncludes(root.right, target);
+};
+
+// breadth first search
+const treeIncludes1 = (root, target) => {
+  if (root === null) return false;
+  const queue = [root];
+  while (queue.length > 0) {
+    const current = queue.shift();
+    if (current.val === target) return true;
+    if (current.left !== null) queue.push(current.left);
+    if (current.right !== null) queue.push(current.right);
+  }
+  return false;
 };
 
 const a = new Node('a');
@@ -36,3 +50,4 @@ c.right = f;
 // d   e     f
 
 treeIncludes(a, 'e'); // -> true
+treeIncludes1(a, 'e'); // -> true
