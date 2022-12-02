@@ -13,7 +13,16 @@ class Node {
 }
 
 const pathFinder = (root, target) => {
-  // todo
+  if (root === null) return null;
+  if (root.val === target) return [target];
+
+  const leftPath = pathFinder(root.left);
+  const rightPath = pathFinder(root.right);
+
+  if (leftPath !== null) return [root.val, ...leftPath];
+  if (rightPath !== null) return [root.val, ...rightPath];
+
+  return null;
 };
 
 const a = new Node('a');

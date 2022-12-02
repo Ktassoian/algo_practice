@@ -50,4 +50,3 @@ c.right = f;
 // d   e     f
 
 treeIncludes(a, 'e'); // -> true
-treeIncludes1(a, 'e'); // -> true
