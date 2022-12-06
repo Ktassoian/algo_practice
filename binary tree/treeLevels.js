@@ -29,6 +29,28 @@ const treeLevels1 = (root) => {
   return levels;
 };
 
+const treeLevels2 = (root) => {
+  if (root === null) return [];
+
+  const levels = [];
+  const queue = [{ node: root, levelNum: 0 }];
+
+  while (queue.length > 0) {
+    const { node, levelNum } = queue.shift();
+
+    if (levels.length === levelNum) {
+      levels.push([node.val]);
+    } else {
+      levels[levelNum].push(node.val);
+    }
+    if (node.left !== null)
+      queue.push({ node: node.left, levelNum: levelNum + 1 });
+    if (node.right !== null)
+      queue.push({ node: node.right, levelNum: levelNum + 1 });
+  }
+  return levels;
+};
+
 const a = new Node('a');
 const b = new Node('b');
 const c = new Node('c');
@@ -48,7 +70,8 @@ c.right = f;
 //  / \     \
 // d   e     f
 
-treeLevels1(a); // ->
+treeLevels1(a);
+treeLevels2(a); // ->
 // [
 //   ['a'],
 //   ['b', 'c'],
