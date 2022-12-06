@@ -9,7 +9,7 @@ class Node {
     this.right = null;
   }
 }
-
+// Depth First
 const treeLevels1 = (root) => {
   if (root === null) return [];
   const levels = [];
@@ -29,6 +29,7 @@ const treeLevels1 = (root) => {
   return levels;
 };
 
+// breadth First
 const treeLevels2 = (root) => {
   if (root === null) return [];
 
@@ -51,6 +52,25 @@ const treeLevels2 = (root) => {
   return levels;
 };
 
+// recursive
+const treeLevels3 = (root) => {
+  const levels = [];
+  fillLevels(root, levels, 0);
+  return levels;
+};
+
+const fillLevels = (root, levels, levelNum) => {
+  if (root === null) return;
+
+  if (levels.length === levelNum) {
+    levels.push([root.val]);
+  } else {
+    levels[levelNum].push(root.val);
+  }
+  fillLevels(root.left, levels, levelNum + 1);
+  fillLevels(root.right, levels, levelNum + 1);
+};
+
 const a = new Node('a');
 const b = new Node('b');
 const c = new Node('c');
@@ -71,7 +91,8 @@ c.right = f;
 // d   e     f
 
 treeLevels1(a);
-treeLevels2(a); // ->
+treeLevels2(a);
+treeLevels3(a); // ->
 // [
 //   ['a'],
 //   ['b', 'c'],
