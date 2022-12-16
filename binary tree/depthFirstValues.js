@@ -25,8 +25,8 @@ const depthFirstValues = (root) => {
 // Recursive
 const depthFirstValues1 = (root) => {
   if (root === null) return [];
-  const leftVal = depthFirstValues(root.left);
-  const rightVal = depthFirstValues(root.right);
+  const leftVal = depthFirstValues1(root.left);
+  const rightVal = depthFirstValues1(root.right);
   return [root.val, ...leftVal, ...rightVal];
 };
 
