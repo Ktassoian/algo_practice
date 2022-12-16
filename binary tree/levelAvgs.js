@@ -9,7 +9,7 @@ class Node {
     this.right = null;
   }
 }
-
+// Depth First
 const levelAverages = (root) => {
   if (root === null) return [];
   const levels = [];
@@ -34,6 +34,38 @@ const levelAverages = (root) => {
   return result;
 };
 
+// recursive
+const levelAverages1 = (root) => {
+  const levels = [];
+  fillLevels(root, levels, 0);
+
+  const avgs = [];
+  for (let level of levels) {
+    avgs.push(avg(level));
+  }
+  return avgs;
+};
+
+const fillLevels = (root, levels, levelNum) => {
+  if (root === null) return;
+
+  if (levels.length === levelNum) {
+    levels[levelNum] = [root.val];
+  } else {
+    levels[levelNum].push(root.val);
+  }
+  fillLevels(root.left, levels, levelNum + 1);
+  fillLevels(root.right, levels, levelNum + 1);
+};
+
+const avg = (arr) => {
+  let sum = 0;
+  for (let num of arr) {
+    sum += num;
+  }
+  return sum / arr.length;
+};
+
 const a = new Node(3);
 const b = new Node(11);
 const c = new Node(4);
@@ -54,3 +86,4 @@ c.right = f;
 // 4   -2     1
 
 levelAverages(a); // -> [ 3, 7.5, 1 ]
+levelAverages1(a);
