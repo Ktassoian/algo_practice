@@ -26,6 +26,19 @@ const leafList = (root) => {
   return result;
 };
 
+// recursive
+const leafList1 = (root) => {
+  const leaves = [];
+  const fillLeaves = (root, leaves) => {
+    if (root === null) return;
+    if (root.left === null && root.right === null) leaves.push(root.val);
+    fillLeaves(root.left, leaves);
+    fillLeaves(root.right, leaves);
+  };
+  fillLeaves(root, leaves);
+  return leaves;
+};
+
 const a = new Node('a');
 const b = new Node('b');
 const c = new Node('c');
@@ -46,3 +59,4 @@ c.right = f;
 // d   e     f
 
 leafList(a); // -> [ 'd', 'e', 'f' ]
+leafList1(a); // -> [ 'd', 'e', 'f' ]
